@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MeasurementEtCO2" xml:space="preserve">
+    <value>M EtCO2</value>
+  </data>
+  <data name="MeasurementFiO2" xml:space="preserve">
+    <value>M FiO2</value>
+  </data>
+  <data name="MeasurementIE" xml:space="preserve">
+    <value>M I:E</value>
+  </data>
+  <data name="MeasurementInspCO2" xml:space="preserve">
+    <value>M InspCO2</value>
+  </data>
+  <data name="MeasurementInspTime" xml:space="preserve">
+    <value>M Insp Time</value>
+  </data>
+  <data name="MeasurementLeakage" xml:space="preserve">
+    <value>M Leakage</value>
+  </data>
+  <data name="MeasurementMute" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="MeasurementMV" xml:space="preserve">
+    <value>M MV</value>
+  </data>
+  <data name="MeasurementPeep" xml:space="preserve">
+    <value>M PEEP</value>
+  </data>
+  <data name="MeasurementPercentSpont" xml:space="preserve">
+    <value>M % Spont</value>
+  </data>
+  <data name="MeasurementPercentTV" xml:space="preserve">
+    <value>M % in TV</value>
+  </data>
+  <data name="MeasurementPMean" xml:space="preserve">
+    <value>M PMean</value>
+  </data>
+  <data name="MeasurementPowerSource" xml:space="preserve">
+    <value>Power Source</value>
+  </data>
+  <data name="MeasurementPulse" xml:space="preserve">
+    <value>M Pulse</value>
+  </data>
+  <data name="MeasurementRiseTime" xml:space="preserve">
+    <value>M Rise Time</value>
+  </data>
+  <data name="MeasurementSpO2" xml:space="preserve">
+    <value>M SpO2</value>
+  </data>
+  <data name="MeasurementSpontRate" xml:space="preserve">
+    <value>M Spont Rate</value>
+  </data>
+  <data name="MeasurementTotalRate" xml:space="preserve">
+    <value>M Total Rate</value>
+  </data>
+  <data name="MeasurementTriggerType" xml:space="preserve">
+    <value>Trigger Type</value>
+  </data>
+  <data name="MeasurementVt" xml:space="preserve">
+    <value>M Vt</value>
+  </data>
+  <data name="ClickonBatCapacity" xml:space="preserve">
+    <value>Clickon Bat Capacity</value>
+  </data>
+  <data name="ClickonBatStatus" xml:space="preserve">
+    <value>Clickon Bat Status</value>
+  </data>
+  <data name="MeasurementSpO2OnOff" xml:space="preserve">
+    <value>M SpO2 On / Off</value>
+  </data>
+  <data name="CurrentCircuit" xml:space="preserve">
+    <value>O Current Circuit</value>
+  </data>
+  <data name="MeasurementFiO2OnOff" xml:space="preserve">
+    <value>M FiO2 On / Off</value>
+  </data>
+  <data name="IntBatCapacity" xml:space="preserve">
+    <value>Int Bat Capacity</value>
+  </data>
+  <data name="IntBatStatus" xml:space="preserve">
+    <value>Int Bat Status</value>
+  </data>
+  <data name="MeasurementEtCO2OnOff" xml:space="preserve">
+    <value>M EtCO2 On / Off</value>
+  </data>
+  <data name="BreathMode" xml:space="preserve">
+    <value>P Breath Mode</value>
+  </data>
+  <data name="VentMode" xml:space="preserve">
+    <value>P Vent Mode</value>
+  </data>
+  <data name="SettingTargetVol" xml:space="preserve">
+    <value>T Target Vol</value>
+  </data>
+  <data name="SystemState" xml:space="preserve">
+    <value>System State</value>
+  </data>
+  <data name="MeasurementPPeak" xml:space="preserve">
+    <value>M PPeak</value>
+  </data>
+  <data name="MeasurementDV" xml:space="preserve">
+    <value>M Delta Vol</value>
+  </data>
+  <data name="Profile1Activated" xml:space="preserve">
+    <value>O Profile 1 Activated</value>
+  </data>
+  <data name="Profile2Activated" xml:space="preserve">
+    <value>O Profile 2 Activated</value>
+  </data>
+  <data name="Profile3Activated" xml:space="preserve">
+    <value>O Profile 3 Activated</value>
+  </data>
+  <data name="PatientMode" xml:space="preserve">
+    <value>O Patient Mode</value>
+  </data>
+  <data name="AdjustmentInHome" xml:space="preserve">
+    <value>O Adjustment in Home</value>
+  </data>
+  <data name="AlarmMask0_31" xml:space="preserve">
+    <value>Alarm 0-31</value>
+  </data>
+  <data name="AlarmMask128_159" xml:space="preserve">
+    <value>Info 128-159</value>
+  </data>
+  <data name="AlarmMask32_63" xml:space="preserve">
+    <value>Alarm 32-63</value>
+  </data>
+  <data name="AlarmMask64_95" xml:space="preserve">
+    <value>Alarm 64-95</value>
+  </data>
+  <data name="AlarmMask96_127" xml:space="preserve">
+    <value>Alarm 96-127</value>
+  </data>
+  <data name="AudioMute" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="CircuitRecognition" xml:space="preserve">
+    <value>O Circuit Recognition</value>
+  </data>
+  <data name="DeviceMode" xml:space="preserve">
+    <value>O Device Mode</value>
+  </data>
+  <data name="EtCO2Unit" xml:space="preserve">
+    <value>O EtCO2 Unit</value>
+  </data>
+  <data name="MeasurementCO2AtmPress" xml:space="preserve">
+    <value>M CO2 sensor atm. pres.</value>
+  </data>
+  <data name="PressureUnit" xml:space="preserve">
+    <value>O Pressure Unit</value>
+  </data>
+  <data name="SelectedProfile" xml:space="preserve">
+    <value>O Selected Profile</value>
+  </data>
+  <data name="SettingApneaAlarm" xml:space="preserve">
+    <value>A Apnea Alarm</value>
+  </data>
+  <data name="SettingBackupRate" xml:space="preserve">
+    <value>T Backup Rate</value>
+  </data>
+  <data name="SettingBreathRateHighAlarm" xml:space="preserve">
+    <value>A Breath Rate High Alarm</value>
+  </data>
+  <data name="SettingBreathRateLowAlarm" xml:space="preserve">
+    <value>A Breath Rate Low Alarm</value>
+  </data>
+  <data name="SettingCpap" xml:space="preserve">
+    <value>T CPAP</value>
+  </data>
+  <data name="SettingEtCO2HighAlarmKpa" xml:space="preserve">
+    <value>A EtCO2 High Alarm(kPa)</value>
+  </data>
+  <data name="SettingEtCO2HighAlarmMmhg" xml:space="preserve">
+    <value>A EtCO2 High Alarm(mmHg)</value>
+  </data>
+  <data name="SettingEtCO2HighAlarmPerc" xml:space="preserve">
+    <value>A EtCO2 High Alarm(%)</value>
+  </data>
+  <data name="SettingEtCO2LowAlarmKpa" xml:space="preserve">
+    <value>A EtCO2 Low Alarm(kPa)</value>
+  </data>
+  <data name="SettingEtCO2LowAlarmMmhg" xml:space="preserve">
+    <value>A EtCO2 Low Alarm(mmHg)</value>
+  </data>
+  <data name="SettingEtCO2LowAlarmPerc" xml:space="preserve">
+    <value>A EtCO2 Low Alarm(%)</value>
+  </data>
+  <data name="SettingExpTrigger" xml:space="preserve">
+    <value>T Exp Trig</value>
+  </data>
+  <data name="SettingFiO2HighAlarm" xml:space="preserve">
+    <value>A Flow High Alarm</value>
+  </data>
+  <data name="SettingFiO2LowAlarm" xml:space="preserve">
+    <value>A Flow Low Alarm</value>
+  </data>
+  <data name="SettingFlowPattern" xml:space="preserve">
+    <value>T Flow Pattern</value>
+  </data>
+  <data name="SettingInspCO2HighAlarmKpa" xml:space="preserve">
+    <value>A InCO2 High Alarm(kPa)</value>
+  </data>
+  <data name="SettingInspCO2HighAlarmMmhg" xml:space="preserve">
+    <value>A InCO2 High Alarm(mmHg)</value>
+  </data>
+  <data name="SettingInspCO2HighAlarmPerc" xml:space="preserve">
+    <value>A InCO2 High Alarm(%)</value>
+  </data>
+  <data name="SettingInspPress" xml:space="preserve">
+    <value>T Insp Press</value>
+  </data>
+  <data name="SettingInspPressMax" xml:space="preserve">
+    <value>T Insp Press Max</value>
+  </data>
+  <data name="SettingInspPressMin" xml:space="preserve">
+    <value>T Insp Press Min</value>
+  </data>
+  <data name="SettingInspTime" xml:space="preserve">
+    <value>T Insp Time</value>
+  </data>
+  <data name="SettingInspTimeMax" xml:space="preserve">
+    <value>T Insp Time Max</value>
+  </data>
+  <data name="SettingInspTimeMin" xml:space="preserve">
+    <value>T Insp Time Min</value>
+  </data>
+  <data name="SettingInspTrigger" xml:space="preserve">
+    <value>T Insp Trig</value>
+  </data>
+  <data name="SettingLeakageHighAlarm" xml:space="preserve">
+    <value>A Disconnection Alarm</value>
+  </data>
+  <data name="SettingLeakageLowAlarm" xml:space="preserve">
+    <value>A Rebreathing Alarm</value>
+  </data>
+  <data name="SettingMinuteVolHighAlarm" xml:space="preserve">
+    <value>A MinuteVol HighAlarm</value>
+  </data>
+  <data name="SettingMinuteVolHighExpAlarm" xml:space="preserve">
+    <value>A MVe High Alarm</value>
+  </data>
+  <data name="SettingMinuteVolHighInspAlarm" xml:space="preserve">
+    <value>A MVi High Alarm</value>
+  </data>
+  <data name="SettingMinuteVolLowAlarm" xml:space="preserve">
+    <value>A MinuteVol LowAlarm</value>
+  </data>
+  <data name="SettingMinuteVolLowExpAlarm" xml:space="preserve">
+    <value>A MVe Low Alarm</value>
+  </data>
+  <data name="SettingMinuteVolLowInspAlarm" xml:space="preserve">
+    <value>A MVi Low Alarm</value>
+  </data>
+  <data name="SettingPeep" xml:space="preserve">
+    <value>T PEEP</value>
+  </data>
+  <data name="SettingPeepHighAlarm" xml:space="preserve">
+    <value>A PEEP High Alarm</value>
+  </data>
+  <data name="SettingPeepLowAlarm" xml:space="preserve">
+    <value>A PEEP Low Alarm</value>
+  </data>
+  <data name="SettingPressHighAlarm" xml:space="preserve">
+    <value>A Press High Alarm</value>
+  </data>
+  <data name="SettingPressLowAlarm" xml:space="preserve">
+    <value>A Press Low Alarm</value>
+  </data>
+  <data name="SettingPulseRateHighAlarm" xml:space="preserve">
+    <value>A Pulse Rate High Alarm</value>
+  </data>
+  <data name="SettingPulseRateLowAlarm" xml:space="preserve">
+    <value>A Pulse Rate Low Alarm</value>
+  </data>
+  <data name="SettingRiseTimePress" xml:space="preserve">
+    <value>T RiseTime Press</value>
+  </data>
+  <data name="SettingRiseTimeVol" xml:space="preserve">
+    <value>T RiseTime Vol</value>
+  </data>
+  <data name="SettingSetVol" xml:space="preserve">
+    <value>T Set Vol</value>
+  </data>
+  <data name="SettingSpO2HighAlarm" xml:space="preserve">
+    <value>A SPO2 High Alarm</value>
+  </data>
+  <data name="SettingSpO2LowAlarm" xml:space="preserve">
+    <value>A SPO2 Low Alarm</value>
+  </data>
+  <data name="SettingTargetPress" xml:space="preserve">
+    <value>T Target Press</value>
+  </data>
+  <data name="SettingTargetVolume" xml:space="preserve">
+    <value>T Target Vol</value>
+  </data>
+  <data name="SettingTidalVolHighAlarm" xml:space="preserve">
+    <value>A Tidal Vol High Alarm</value>
+  </data>
+  <data name="SettingTidalVolHighExpAlarm" xml:space="preserve">
+    <value>A Vte High Alarm</value>
+  </data>
+  <data name="SettingTidalVolHighInspAlarm" xml:space="preserve">
+    <value>A Vti High Alarm</value>
+  </data>
+  <data name="SettingTidalVolLowAlarm" xml:space="preserve">
+    <value>A Tidal Vol Low Alarm</value>
+  </data>
+  <data name="SettingTidalVolLowExpAlarm" xml:space="preserve">
+    <value>A Vte Low Alarm</value>
+  </data>
+  <data name="SettingTidalVolLowInspAlarm" xml:space="preserve">
+    <value>A Vti Low Alarm</value>
+  </data>
+  <data name="AlarmSoundLevel" xml:space="preserve">
+    <value>O Alarm Sound Level</value>
+  </data>
+  <data name="SettingEtCO2HighAlarm" xml:space="preserve">
+    <value>A EtCO2 High Alarm</value>
+  </data>
+  <data name="SettingEtCO2LowAlarm" xml:space="preserve">
+    <value>A EtCO2 Low Alarm</value>
+  </data>
+  <data name="SettingEtCO2Unit" xml:space="preserve">
+    <value>O EtCO2 Unit</value>
+  </data>
+  <data name="MeasurementMvE" xml:space="preserve">
+    <value>M MVe</value>
+  </data>
+  <data name="MeasurementMvI" xml:space="preserve">
+    <value>M MVi</value>
+  </data>
+  <data name="MeasurementVtE" xml:space="preserve">
+    <value>M Vte</value>
+  </data>
+  <data name="MeasurementVtI" xml:space="preserve">
+    <value>M Vti</value>
+  </data>
+  <data name="SettingSigh" xml:space="preserve">
+    <value>T Sigh</value>
+  </data>
+  <data name="SettingSighPerc" xml:space="preserve">
+    <value>T Sigh Perc</value>
+  </data>
+  <data name="SettingSighRate" xml:space="preserve">
+    <value>T Sigh Rate</value>
+  </data>
+  <data name="TotalOperatingTime" xml:space="preserve">
+    <value>Tot Operation Hours</value>
+  </data>
+  <data name="EraseLogs" xml:space="preserve">
+    <value>Erase Log</value>
+  </data>
+  <data name="PatientOperatingTime" xml:space="preserve">
+    <value>Tot Treatment Hours</value>
+  </data>
+  <data name="ProfileName" xml:space="preserve">
+    <value>ProfileName</value>
+  </data>
+  <data name="WorkingProfile" xml:space="preserve">
+    <value>F Working Profile</value>
+  </data>
+</root>
