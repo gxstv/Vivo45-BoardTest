@@ -61,7 +61,7 @@ namespace VIVO_45_Board_Test
         {
             double meter = 0;
             double targetVoltage = 3.0;
-            double tolerance = 0.05;
+            double tolerance = 0.10;
             //Create test result
             TestResult outputResult = new TestResult(resultList.Count, TestType.PowerControl,
                 "Tests the RTC backup power");

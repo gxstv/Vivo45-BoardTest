@@ -50,24 +50,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Breas.Device.Vivo\bin\Release\Breas.Device.Vivo.dll</HintPath>
     </Reference>
-    <Reference Include="Breas.Device.Windows">
-      <HintPath>..\..\Breas.Device.Windows\bin\Debug\Breas.Device.Windows.dll</HintPath>
+    <Reference Include="Breas.Device.Vivo45">
+      <HintPath>..\..\..\Vivo45 BoardTest\VIVO 45 Board Test\VIVO 45 Board Test\Breas.Device.Vivo45.dll</HintPath>
     </Reference>
-    <Reference Include="FTD2XX_NET, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\HW drivers\FTD2XX_NET_v1.1.0\FTD2XX_NET.dll</HintPath>
+    <Reference Include="Breas.Device.Windows">
+      <HintPath>..\..\..\Vivo45 BoardTest\VIVO 45 Board Test\VIVO 45 Board Test\Breas.Device.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="FTD2XX_NET">
+      <HintPath>..\..\..\Vivo45 BoardTest\VIVO 45 Board Test\VIVO 45 Board Test\FTD2XX_NET.dll</HintPath>
     </Reference>
     <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.3.20.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NationalInstruments.Common, Version=15.1.40.49152, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\National Instruments\MeasurementStudioVS2012\DotNET\Assemblies\Current\NationalInstruments.Common.dll</HintPath>
+    <Reference Include="NationalInstruments.Common">
+      <HintPath>..\..\..\..\VIVO45 Board Test\VIVO 45 Board Test\packages\NationalInstruments.Common.dll</HintPath>
     </Reference>
-    <Reference Include="NationalInstruments.DAQmx, Version=17.1.45.99, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\National Instruments\MeasurementStudioVS2012\DotNET\Assemblies\Current\NationalInstruments.DAQmx.dll</HintPath>
+    <Reference Include="NationalInstruments.DAQmx">
+      <HintPath>..\..\..\..\VIVO45 Board Test\VIVO 45 Board Test\packages\NationalInstruments.DAQmx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -158,12 +158,6 @@
   <ItemGroup>
     <Content Include="Breas.Device.Vivo.dll" />
     <Content Include="breas_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\SDGUI\Breas.Device.Vivo45\Breas.Device.Vivo45.csproj">
-      <Project>{b65a7719-2cf3-41d6-8784-781996759ce4}</Project>
-      <Name>Breas.Device.Vivo45</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
