@@ -42,19 +42,9 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Breas.Device, Version=1.0.1.24834, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Breas.Device.Windows, Version=1.0.1.24835, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Breas.Device.dll</HintPath>
-    </Reference>
-    <Reference Include="Breas.Device.Vivo, Version=1.0.1.30458, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Breas.Device.Vivo\bin\Release\Breas.Device.Vivo.dll</HintPath>
-    </Reference>
-    <Reference Include="Breas.Device.Vivo45">
-      <HintPath>.\Breas.Device.Vivo45.dll</HintPath>
-    </Reference>
-    <Reference Include="Breas.Device.Windows">
-      <HintPath>.\Breas.Device.Windows.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Vivo45-BoardTest-V1master\VIVO 45 Board Test\VIVO 45 Board Test\Breas.Device.Windows.dll</HintPath>
     </Reference>
     <Reference Include="FTD2XX_NET">
       <HintPath>.\FTD2XX_NET.dll</HintPath>
@@ -66,13 +56,15 @@
     <Reference Include="NationalInstruments.Common">
       <HintPath>..\..\..\..\VIVO45 Board Test\VIVO 45 Board Test\packages\NationalInstruments.Common.dll</HintPath>
     </Reference>
-    <Reference Include="NationalInstruments.DAQmx">
+    <Reference Include="NationalInstruments.DAQmx, Version=17.1.45.99, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Vivo45-BoardTest-V1master\VIVO 45 Board Test\VIVO 45 Board Test\NationalInstruments.DAQmx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -158,6 +150,20 @@
   <ItemGroup>
     <Content Include="Breas.Device.Vivo.dll" />
     <Content Include="breas_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Breas.Device.Vivo45\Breas.Device.Vivo45.csproj">
+      <Project>{b65a7719-2cf3-41d6-8784-781996759ce4}</Project>
+      <Name>Breas.Device.Vivo45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Breas.Device.Vivo\Breas.Device.Vivo.csproj">
+      <Project>{71454de5-59c3-4183-b13c-42f81f07afa2}</Project>
+      <Name>Breas.Device.Vivo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Breas.Device\Breas.Device.csproj">
+      <Project>{9e1ae197-72f3-4721-8f74-6edbece68adb}</Project>
+      <Name>Breas.Device</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

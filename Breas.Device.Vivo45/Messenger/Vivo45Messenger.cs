@@ -412,6 +412,37 @@ namespace Breas.Device.Vivo45.Messenger
             }
         }
 
+        public struct ChangeRtcResult
+        {
+            
+            public DateTime time { get; set; }
+            public DateTime OldTime { get; set; }
+
+            public ChangeRtcResult(byte[] inData)
+                : this()
+            {
+                DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                int i = 0;
+                this.time = epoch.AddSeconds(BitConverter.ToUInt32(inData, i));
+                i += 4;
+                epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                this.OldTime = epoch.AddSeconds(BitConverter.ToUInt32(inData, i));
+
+            }
+        }
+
+        public struct GetRtcResult
+        {
+
+            public DateTime time { get; set; }
+
+            public GetRtcResult(byte[] inData)
+                : this()
+            {
+                this.time = new DateTime(2018, inData[0]+1, inData[1], inData[2]+1, inData[3], inData[4]);
+            }
+        }
+
         public ChangeSettingResult StepSetting(byte profile, byte type, ushort settingId, StepSettingDirection direction)
         {
             byte[] data = new byte[5];
@@ -444,6 +475,82 @@ namespace Breas.Device.Vivo45.Messenger
             ChangeSettingResult changesettingresult = new ChangeSettingResult(ret.Payload);
 
             return changesettingresult;
+        }
+
+        public bool ChangeProfileName(byte ProfileId, string profileName)
+        {
+            byte[] data = new byte[13];
+            for(int i=0;i<data.Length;i++)
+            {
+                data[i] = 0;
+            }
+            int offset = 0;
+            data.Add(ref offset, ProfileId);
+            data.Add(ref offset, System.Text.Encoding.UTF8.GetBytes(profileName));
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdSetProfileName, data, sender, receiver);
+            var ret = SendMessage(cmdPack);
+
+            return Convert.ToBoolean(ret.Payload[0]);
+        }
+
+        public ChangeRtcResult setRTC(byte year, byte month, byte day, byte hour, byte minute, byte sec)
+        {
+            byte[] data = new byte[6];
+
+            int offset = 0;
+            data.Add(ref offset, year);
+            data.Add(ref offset, (byte)(month-1));
+            data.Add(ref offset, day);
+            data.Add(ref offset, hour);
+            data.Add(ref offset, minute);
+            data.Add(ref offset, 0);
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdSetRTC, data, sender, receiver);
+
+            var ret = SendMessage(cmdPack);
+            ChangeRtcResult changertcresult = new ChangeRtcResult(ret.Payload);
+
+            return changertcresult;
+        }
+
+
+        public GetRtcResult getRTC()
+        {
+            byte[] data = new byte[0];
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGetRTC, data, sender, receiver);
+
+            var ret = SendMessage(cmdPack);
+            GetRtcResult changertcresult = new GetRtcResult(ret.Payload);
+
+            return changertcresult;
+        }
+
+        public int DiskCheck(byte target)
+        {
+            byte[] data = new byte[1];
+
+            int offset = 0;
+            data.Add(ref offset, target);
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdDiskTest, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return packet.Payload[0];
+        }
+
+        public int GetRTC(byte target)
+        {
+            byte[] data = new byte[0];
+
+            int offset = 0;
+            data.Add(ref offset, target);
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGetRTC, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return packet.Payload[0];
         }
 
         public bool CopyProfile(byte sourceProfile, byte destinationProfile)
@@ -527,6 +634,50 @@ namespace Breas.Device.Vivo45.Messenger
             return Convert.ToBoolean(packet.Payload[0]);
         }
 
+        public Boolean Screenshot(string str)
+        {
+            if (str.Length == 55)
+            {
+                str = str+"\n";
+            }
+            byte[] data = new byte[System.Text.Encoding.UTF8.GetBytes(str).Length + 1]; //Add one for null termination
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = 0;
+            }
+
+            int offset = 0;
+            data.Add(ref offset, System.Text.Encoding.UTF8.GetBytes(str));
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdScreenshoot, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+            return Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean BottonPress(UInt16 buttonNumber)
+        {
+            byte[] data = new byte[3]; 
+            int offset = 0;
+            data.Add(ref offset, BitConverter.GetBytes(buttonNumber));
+            data.Add(ref offset, 1);//Pressed
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdButtonPress, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+            return Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean SetAlarm(byte alarm,byte active)
+        {
+            byte[] data = new byte[3];
+            int offset = 0;
+            data.Add(ref offset, alarm);
+            data.Add(ref offset, active);//Pressed
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdSetAlarm, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+            return Convert.ToBoolean(packet.Payload[0]);
+        }
         //
         //ChangeCalibration
         //EndCalibration
@@ -590,6 +741,20 @@ namespace Breas.Device.Vivo45.Messenger
             return Convert.ToBoolean(packet.Payload[0]);
         }
 
+        public Boolean StopTempCompensation()
+        {
+            byte[] data = new byte[1];
+
+            int offset = 0;
+            data.Add(ref offset, Convert.ToByte(3));
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdHandleTempCompensation, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return Convert.ToBoolean(packet.Payload[0]);
+        }
+
         public Boolean StartCalibration()
         {
             byte[] data = new byte[1];
@@ -618,6 +783,16 @@ namespace Breas.Device.Vivo45.Messenger
             return Convert.ToBoolean(packet.Payload[0]);
         }
 
+        public Boolean EraseLog()
+        {
+            byte[] data = new byte[1];
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdEraseLogs, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return Convert.ToBoolean(packet.Payload[0]);
+        }
+
         public Boolean StopTreatment()
         {
             byte[] data = new byte[1];
@@ -641,8 +816,8 @@ namespace Breas.Device.Vivo45.Messenger
             data.Add(ref offset, 0);
             data.Add(ref offset, 0);
             UInt32 time = 1000;
-            data.Add(ref offset, BitConverter.GetBytes(time));
-
+            data.Add(ref offset, BitConverter.GetBytes(time)); //Time
+            //data.Add(ref offset, 5); //Volume
 
             V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdTestBuzzer, data, sender, receiver);
             var packet = SendMessage(cmdPack);
@@ -669,11 +844,33 @@ namespace Breas.Device.Vivo45.Messenger
             return Convert.ToBoolean(packet.Payload[0]);
         }
 
+        public Boolean MuteSpeaker()
+        {
+            byte[] data = new byte[7];
+
+            int offset = 0;
+            data.Add(ref offset, 1); //Speaker
+            data.Add(ref offset, 1); //Action 
+            UInt32 time = 30000;
+            data.Add(ref offset, BitConverter.GetBytes(time)); //Time
+            data.Add(ref offset, 1); //Volume
+
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdTestBuzzer, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return Convert.ToBoolean(packet.Payload[0]);
+        }
+
         public List<Vivo45UsageData> GetUsageData()
         {
             List<Vivo45UsageData> usageDataList = new List<Vivo45UsageData>();
+            byte[] data = new byte[1];
+            int offset = 0;
+            data.Add(ref offset, 10); //Max Event
 
-            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGetAvailableDeviceInfo, new byte[0], sender, receiver);
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGetUsageData, data, sender, receiver);
             var packet = SendMessage(cmdPack);
             UInt16 count = BitConverter.ToUInt16(packet.Payload, 0);
             int j = 2;
@@ -738,7 +935,7 @@ namespace Breas.Device.Vivo45.Messenger
         private V45Packet HandleFileTransfer(String fileName,Byte option, byte[] tempdata)
         {
             byte[] data;
-            if (option==0)
+            if (option < 4)
                 data = new byte[1];
             else
                 data = new byte[1+ tempdata.Length];
@@ -746,7 +943,7 @@ namespace Breas.Device.Vivo45.Messenger
 
             int offset = 0;
             data.Add(ref offset, option);
-            if(option==3)
+            if(option >= 4)
             data.Add(ref offset, tempdata);
             //data.Add(ref offset, Convert.ToByte(fileName));
 
@@ -771,11 +968,11 @@ namespace Breas.Device.Vivo45.Messenger
             return rtn;
         }
 
-        public bool StartUpload(String fileName)
+        public bool StartUpload(String fileName, byte option)
         {
             bool rtn = false;
 
-            V45Packet cmdResponse = HandleFileTransfer(fileName,0,null);
+            V45Packet cmdResponse = HandleFileTransfer(fileName, option, null);
             if (cmdResponse.Status == 0x80)
             {
                 rtn = true;
@@ -783,9 +980,10 @@ namespace Breas.Device.Vivo45.Messenger
 
             return rtn;
         }
-        public byte ContinueUpload(String fileName, byte[] tempdata)
+
+        public byte ContinueUpload(String fileName, byte option, byte[] tempdata)
         {
-            V45Packet cmdResponse = HandleFileTransfer(fileName, 3 ,tempdata);
+            V45Packet cmdResponse = HandleFileTransfer(fileName, option, tempdata);
 
             return cmdResponse.Status;
         }
@@ -800,6 +998,120 @@ namespace Breas.Device.Vivo45.Messenger
         {
             V45Packet cmdResponse = HandleLogData(Vivo45LogPacket.Vivo45LogAction.stopLog, level, Device.Epoch, Device.Epoch, false);
             return cmdResponse;
+        }
+
+        public Boolean UpgradeTreatmentFW()
+        {
+            byte[] data = new byte[1];
+
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdUpdateTreatmentFW, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean deleteCalibrationDB ()
+        {
+            byte[] data = new byte[1];
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdDeleteCalDatabase, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean deleteOtherDBs()
+        {
+            byte[] data = new byte[1];
+
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdDeleteDatabase, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public byte GetDeviceFWMode()
+        {
+            byte[] data = new byte[1];
+
+            int offset = 0;
+            //data.Add(ref offset, Convert.ToByte(V45Packet.V45SystemStateRequests.pwrSTART));
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGetDeviceFWMode, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return packet.Payload[0];// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean UpgradeTreatmentBL()
+        {
+            byte[] data = new byte[1];
+
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdUpdateTreatmentBL, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean PrepareEMMC()
+        {
+            byte[] data = new byte[1];
+
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdPrepareEMMC, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean UpgradeUboot()
+        {
+            byte[] data = new byte[1];
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdUpgradeUboot, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean UpgradeFirmware()
+        {
+            byte[] data = new byte[1];
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdUpgradeFirmware, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean GotoRecoverMode()
+        {
+            byte[] data = new byte[1];
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGotoRecoverMode, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
+        }
+
+        public Boolean RestartDevice()
+        {
+            byte[] data = new byte[1];
+
+
+            V45Packet cmdPack = new V45Packet(V45Packet.V45Commands.cmdGotoNormalMode, data, sender, receiver);
+            var packet = SendMessage(cmdPack);
+
+            return true;// Convert.ToBoolean(packet.Payload[0]);
         }
 
         public bool SetEncryptionKey(byte[] key)
@@ -1099,6 +1411,9 @@ namespace Breas.Device.Vivo45.Messenger
                     }
                 }
             }
+
+
+           
         }
     }
 }

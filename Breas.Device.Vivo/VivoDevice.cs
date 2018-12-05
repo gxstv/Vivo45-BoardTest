@@ -199,9 +199,5 @@ namespace Breas.Device.Vivo
             return new VivoCaptureData(0, 0, 0, 0, 0, 0, 0, 0);
         }
 
-        //public override string ToString()
-        //{
-        //    return this.Product.DisplayName;
-        //}
     }
 }

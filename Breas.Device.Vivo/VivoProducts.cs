@@ -15,7 +15,7 @@ namespace Breas.Device.Vivo
         private static int[] vivo50V7InterfaceVersions = new int[] { 7 };
         private static int[] vivo50USInterfaceVersions = new int[] { 7 };
         private static int[] vivo60InterfaceVersions = new int[] { 8,10,13 };
-        private static int[] vivo65InterfaceVersions = new int[] { 11 };
+        private static int[] vivo65InterfaceVersions = new int[] { 11,14 };
         private static int[] vivoVendorIds = new int[] { 0x1DAF };
         private static int[] vivoProductIds = new int[] { 20576, 5060 };
 
@@ -79,8 +79,10 @@ namespace Breas.Device.Vivo
                 return Vivo50V7;
             else if (vivo50USInterfaceVersions.Contains(interfaceVersion) && name == Vivo50US.ModelName)
                 return Vivo50US;
-            else if ((vivo65InterfaceVersions.Contains(interfaceVersion)||vivo60InterfaceVersions.Contains(interfaceVersion)) && (name == Vivo65.ModelName|| name == Vivo60.ModelName))
+            else if (vivo60InterfaceVersions.Contains(interfaceVersion) && (name == Vivo60.ModelName))
                 return Vivo60;
+            else if (vivo65InterfaceVersions.Contains(interfaceVersion) && (name == Vivo65.ModelName ))
+                return Vivo65;
             return null; //support base model if we cant find out what we are connected to
         }
 

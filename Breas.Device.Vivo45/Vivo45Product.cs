@@ -19,7 +19,7 @@ namespace Breas.Device.Vivo45
             ResolveVivo45);
 
         public static readonly Product Vivo45LS = new Product(
-            "VIVO45LS",
+            "VIVO45_LS",
             "Vivo 45 LS",
             Vivo45LSColor,
             typeof(Vivo45Device),

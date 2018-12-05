@@ -22,6 +22,7 @@ namespace Breas.Device.Vivo
             Measurements.Add(VivoProducts.Vivo50V7, new Vivo50V7Measurements());
             Measurements.Add(VivoProducts.Vivo50US, new Vivo50USMeasurements());
             Measurements.Add(VivoProducts.Vivo60, new Vivo60Measurements());
+            Measurements.Add(VivoProducts.Vivo65, new Vivo60Measurements());
         }
 
         #region Fields

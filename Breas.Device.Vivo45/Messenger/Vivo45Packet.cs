@@ -92,17 +92,36 @@ namespace Breas.Device.Vivo45.Messenger
             cmdHandleLogData          = 0x19,  /**< Handle log data */
             cmdEraseLogs              = 0x1A,  /**< Erase log files */
             cmdHandleTempCompensation = 0x1B,  /**< Handle temp compensation */
-
+            cmdGetDeviceFWMode        = 0x1E,
             cmdGetAllSettings         = 0x1C,  /**< Get all settings as a serialized allParameters struct */
             cmdHandleWifi             = 0x1D,  /**< Wrapper for wpa_ctrl command  SCAN, SCAN_RESULTS, ADD_NETWORK and such */
-            cmdSendFile               = 0x1E,  /**< Send files command */
+            cmdScreenshoot            = 0x1F,  /**< Take Screenshot */
 
             cmdSetEncryptionKey       = 0x40,  /**< Set encryption key */
             cmdGetChallengeString     = 0x41,  /**< Get challenge string */
             cmdVerifyChallengeString  = 0x42,  /**< Verify challenge string */
             cmdEndSession             = 0x43,  /**< End authenticated session */
 
-            cmdTestBuzzer             = 0x80,  /**<  */
+            cmdUpdateTreatmentFW = 0x20,  /**< Send update treatment CPU firmware command */
+            cmdUpdateTreatmentBL = 0x21,  /**< Send update treatment CPU bootloader command */
+            cmdRebootTreatmentCPU = 0x22,  /**< Send reboot treatment CPU  command */
+            cmdRebootCommCPU = 0x23,  /**< Send reboot Communication CPU command */
+            cmdGotoRecoverMode = 0x24,  /**< Send put Communication CPU to recover mode command */
+            cmdGotoNormalMode = 0x25,  /**< Send put Communication CPU to normal mode command */
+            cmdSendFile = 0x26,  /**< Send new firmware file command */
+            cmdDeleteCalDatabase = 0x27,  /**< Delete calibration database command */
+            cmdDeleteDatabase = 0x28,  /**< Delete all database (expect calibration) database command */
+            cmdPrepareEMMC = 0x29,  /**< Prepare eMMC command */
+            cmdUpgradeUboot = 0x2A,  /**< Flash U-boot image to eMMC command */
+            cmdUpgradeFirmware = 0x2B,  /**< Upgrade firmware on eMMC command */
+
+            cmdTestBuzzer = 0x80,  /**<  */
+            cmdButtonPress            = 0x81,
+            cmdSetAlarm               = 0x82,
+            cmdSetProfileName         = 0x83,
+            cmdSetRTC                 = 0x84,
+            cmdDiskTest               = 0x85,
+            cmdGetRTC                 = 0x86,
             cmdNoCommand              = 0xFF   /**< No cmd */
         }
 

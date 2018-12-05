@@ -110,6 +110,7 @@ namespace Breas.Device.Vivo
             Alarms[VivoProducts.Vivo50V7] = Vivo50V7Alarms.Alarms;
             Alarms[VivoProducts.Vivo50US] = Vivo50V7Alarms.Alarms;
             Alarms[VivoProducts.Vivo60] = Vivo60Alarms.Alarms;
+            Alarms[VivoProducts.Vivo65] = Vivo60Alarms.Alarms;
         }
     }
 }

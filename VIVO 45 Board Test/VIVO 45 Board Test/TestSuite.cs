@@ -23,7 +23,9 @@ namespace VIVO_45_Board_Test
 #if version1
     public enum TestNames {
         //User interface tests -- always have LCD tests first out of all tests
-        TestLCD = 0, DebugTest, TestBacklight,
+        TestLCD = 0,
+        //DebugTest,
+        TestBacklight,
         TestExtDcDisable,
         TestExtBattControl,  
         TestSpeakerAudio, TestSpeakerCurrent,
@@ -319,7 +321,7 @@ namespace VIVO_45_Board_Test
             //testFunctions[(int)TestNames.TestSupercapCharging] = new TestFunction(RunTestSupercapCharging, "Supercap charging test");
             //testFunctions[(int)TestNames.TestSupercapTherm] = new TestFunction(RunTestSupercapTherm, "Supercap thermistor test");
 
-            testFunctions[(int)TestNames.DebugTest] = new TestFunction(RunDebugTest, "Debug Test");
+            //testFunctions[(int)TestNames.DebugTest] = new TestFunction(RunDebugTest, "Debug Test");
 #else
             //Initialize tests with specific descriptions, and if needed required revisions
             testFunctions[(int)TestNames.Test12VT] = new TestFunction(RunTest12VT, "12V treatment supply test");
