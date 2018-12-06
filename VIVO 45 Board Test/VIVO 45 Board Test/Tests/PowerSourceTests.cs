@@ -410,13 +410,13 @@ namespace VIVO_45_Board_Test
             fixture.pwrSupply.SetVoltage(fixture.IntBattChannel, nextTarget);
 
             //Wait for power supplies to settle
-            Thread.Sleep(PowerSettleMs);
+            Thread.Sleep(PowerSettleMs * 10);
 
             //Load MUXED POWER
             fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.LoadResMuxPower, true);
 
             //Delay for relay to switch
-            Thread.Sleep(DigitalOutput.SwitchingMs);
+            Thread.Sleep(DigitalOutput.SwitchingMs * 10);
 
             //Enable all power sources using MP
             fixture.device.SetMP("Power Source", 0);
@@ -440,7 +440,7 @@ namespace VIVO_45_Board_Test
             fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.ButtonStartSim, true);
 
             //Delay for relay to switch
-            Thread.Sleep(DigitalOutput.SwitchingMs);
+            Thread.Sleep(DigitalOutput.SwitchingMs * 10);
 
             //Measure MUX voltage using scope
             meter = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.MuxedPwr, Imports.Range.Range_20V);
@@ -455,7 +455,7 @@ namespace VIVO_45_Board_Test
             fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.ButtonStartSim, true);
 
             //Delay for relay to switch
-            Thread.Sleep(DigitalOutput.SwitchingMs);
+            Thread.Sleep(DigitalOutput.SwitchingMs * 10);
 
             ResetPowerSources();
 
