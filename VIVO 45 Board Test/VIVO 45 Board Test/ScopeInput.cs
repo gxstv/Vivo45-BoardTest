@@ -347,7 +347,7 @@ namespace VIVO_45_Board_Test
             Imports.Range range = MaxRange;
             bool rising = true;
             double voltage;
-            double scaling = inputRanges[(int)range] / Imports.MaxValue;
+
 
             //Get the voltage range using the expected voltage of the signal
             for (int i = 0; i < inputRanges.Length; i++)
@@ -358,7 +358,7 @@ namespace VIVO_45_Board_Test
                     break;
                 }
             }
-
+            double scaling = inputRanges[(int)range] / Imports.MaxValue;
             int[] channels = { channel };
 
             //Capture PWM waveform
@@ -376,7 +376,7 @@ namespace VIVO_45_Board_Test
             {
                 rising = false;
             }
-            //System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\pcadmin\Desktop\file.txt");
+            //System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\MainBd_TestStand_2\Desktop\waveform.txt");
 
             //Iterate over results and get crossing counts
             for (

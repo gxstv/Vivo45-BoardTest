@@ -150,7 +150,7 @@ namespace VIVO_45_Board_Test
             double conversionFactor = 0.004394545;
             double targetVoltage = 5;
             double tolerance = 0.05;
-            double mpTolerance = 0.02;
+            double mpTolerance = 0.05;
 
             //Create test result
             TestResult outputResult = new TestResult(resultList.Count, TestType.PowerSupply,

@@ -77,7 +77,9 @@ namespace VIVO_45_Board_Test
         //Communication interface tests
         //TestEthernet, TestWifi, TestBT,
         //TestExtBattComm, TestIntBattComm,
-        TestXCO2, TestSpO2, TestEffortBelt, TestFPBoardComm, TestPatientBoardComm,
+        TestXCO2, TestSpO2, TestEffortBelt,
+        //TestFPBoardComm, 
+        TestPatientBoardComm,
         //TestNurseCall, 
         //TestRAComm,
 
@@ -308,7 +310,7 @@ namespace VIVO_45_Board_Test
             testFunctions[(int)TestNames.TestXCO2] = new TestFunction(RunTestXCO2, "xCO2 communication test");
             testFunctions[(int)TestNames.TestSpO2] = new TestFunction(RunTestSpO2, "SpO2 communication test");
             testFunctions[(int)TestNames.TestEffortBelt] = new TestFunction(RunTestEffortBelt, "Effort belt communication test");
-            testFunctions[(int)TestNames.TestFPBoardComm] = new TestFunction(RunTestFPBoardComm, "Flow and pressure commmunication test");
+            //testFunctions[(int)TestNames.TestFPBoardComm] = new TestFunction(RunTestFPBoardComm, "Flow and pressure commmunication test");
             testFunctions[(int)TestNames.TestPatientBoardComm] = new TestFunction(RunTestPatientBoardComm, "Patient board communication test");
             //testFunctions[(int)TestNames.TestNurseCall] = new TestFunction(RunTestNurseCall, "Nurse call interface test");
             //testFunctions[(int)TestNames.TestRAComm] = new TestFunction(RunTestRAComm, "Remote alarm interface test");

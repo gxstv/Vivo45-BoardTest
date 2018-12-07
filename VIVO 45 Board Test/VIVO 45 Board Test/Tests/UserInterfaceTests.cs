@@ -317,7 +317,7 @@ namespace VIVO_45_Board_Test
                 fixture.outputController.EnableOutput(nextButton, true);
 
                 //Wait for signals to settle
-                Thread.Sleep(DigitalOutput.SwitchingMs);
+                Thread.Sleep(DigitalOutput.SwitchingMs * 4);
 
                 //Check MP value
                 mpValue = fixture.device.GetMpValue("Which keys are pressed");

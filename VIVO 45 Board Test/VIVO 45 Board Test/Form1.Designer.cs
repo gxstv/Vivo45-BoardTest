@@ -390,7 +390,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "VIVO45 Board Test v1.2.3";
+            this.Text = "VIVO45 Board Test v2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

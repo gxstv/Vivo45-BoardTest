@@ -126,7 +126,7 @@ namespace VIVO_45_Board_Test
             TestResult outputResult = new TestResult(resultList.Count, TestType.CommunicationInterface,
                 "Tests the effort belt communication interface");
 
-            outputResult.AddCondition("Thoracic Effort", Operation.Between, 40000,50000);
+            outputResult.AddCondition("Thoracic Effort", Operation.NotEqual, 0);
             int mpValue = fixture.device.GetMpValue("Thoracic Effort");
             if(mpValue== 0)
             {
@@ -135,7 +135,7 @@ namespace VIVO_45_Board_Test
             }
             outputResult.SetOutcome("Thoracic Effort", mpValue);
 
-            outputResult.AddCondition("Abdominal Effort", Operation.Between, 40000, 50000);
+            outputResult.AddCondition("Abdominal Effort", Operation.NotEqual, 0);
 
             mpValue = fixture.device.GetMpValue("Abdominal Effort");
 
