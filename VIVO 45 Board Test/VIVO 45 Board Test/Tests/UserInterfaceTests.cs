@@ -221,26 +221,40 @@ namespace VIVO_45_Board_Test
 
             outputResult.AddCondition("Crossing counts", Operation.Between, target * (1 - tolerance), target * (1 + tolerance));
             outputResult.AddCondition("Max voltage", Operation.GreaterThan, 4);
-            //Write MP to enable buzzer
-            fixture.device.StartBuzzer();
 
-            //Wait for buzzer to enable
-            Thread.Sleep(500);
+            for (int retryCount = 0; retryCount < 3; retryCount++)
+            {
+                //Write MP to enable buzzer
+                fixture.device.StartBuzzer();
 
-            //Set the scope address
-            fixture.outputController.SetScopeAddr((int)ScopeInput.MuxedInputSignal.Transducer);
+                //Wait for buzzer to enable
+                Thread.Sleep(500);
 
-            //Get crossing counts for given time frame of 200 ms
-            int counts = fixture.scopeInput.GetScopeCrossingCounts(fixture.MainScopeChannel, 5, 200);
-            double maxVoltage = fixture.scopeInput.CalculateSignalMaxVoltage(fixture.MainScopeChannel);
+                //Set the scope address
+                fixture.outputController.SetScopeAddr((int)ScopeInput.MuxedInputSignal.Transducer);
 
-            //Reset the scope address
-            fixture.outputController.SetScopeAddr(0);
+                //Get crossing counts for given time frame of 200 ms
+                int counts = fixture.scopeInput.GetScopeCrossingCounts(fixture.MainScopeChannel, 5, 200);
+                double maxVoltage = fixture.scopeInput.CalculateSignalMaxVoltage(fixture.MainScopeChannel);
 
-            //Save results
-            outputResult.SetOutcome("Crossing counts", counts);
-            outputResult.SetOutcome("Max voltage", maxVoltage);
+                //Reset the scope address
+                fixture.outputController.SetScopeAddr(0);
 
+                
+                //Save results
+                outputResult.SetOutcome("Crossing counts", counts);
+                outputResult.SetOutcome("Max voltage", maxVoltage);
+
+                if (counts > 202 || counts < 198)
+                {
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
+
+            }
             return outputResult;
         }
 
