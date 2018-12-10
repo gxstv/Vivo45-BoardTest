@@ -225,7 +225,7 @@ namespace VIVO_45_Board_Test
             fixture.device.StartBuzzer();
 
             //Wait for buzzer to enable
-            Thread.Sleep(100);
+            Thread.Sleep(500);
 
             //Set the scope address
             fixture.outputController.SetScopeAddr((int)ScopeInput.MuxedInputSignal.Transducer);
