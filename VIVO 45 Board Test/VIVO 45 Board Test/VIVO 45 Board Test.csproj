@@ -91,6 +91,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResultBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultBox.Designer.cs">
+      <DependentUpon>ResultBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="FtdiDevice.cs" />
     <Compile Include="PicoConnectProbes.cs" />
     <Compile Include="PicoPinnedArray.cs" />
@@ -131,6 +137,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ResultBox.resx">
+      <DependentUpon>ResultBox.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

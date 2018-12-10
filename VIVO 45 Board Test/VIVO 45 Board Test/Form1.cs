@@ -480,10 +480,17 @@ namespace VIVO_45_Board_Test
                     break;
                 }
             }
-            if(pass)
-                MessageBox.Show("Test Pass.\nReport saved to " + reportPath + " and " + jsonReportPath + " and " + xmlReportPath);
+
+            if (pass)
+            {
+                ResultBox message = new ResultBox("Test Pass", true);
+                message.Show();
+            }
             else
-                MessageBox.Show("Test Fail.\nReport saved to " + reportPath + " and " + jsonReportPath + " and " + xmlReportPath);
+            {
+                ResultBox message = new ResultBox("Test Fail", false);
+                message.Show();
+            }
             reportPath = "";
             jsonReportPath = "";
             xmlReportPath = "";
