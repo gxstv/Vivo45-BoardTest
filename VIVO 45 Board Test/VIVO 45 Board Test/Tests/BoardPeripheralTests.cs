@@ -84,15 +84,16 @@ namespace VIVO_45_Board_Test
 
         private TestResult RunTestRtcValue()
         {
+            
             int sleepMs = 15000;
+            int toleranceForTimeDiff = 3;
             TestResult outputResult = new TestResult(resultList.Count, TestType.BoardPeripheral,
                 "Tests the RTC value volatility");
-
+            Thread.Sleep(sleepMs);
             //Create a +/-2 sec time difference condition
-            outputResult.AddCondition("Time difference", Operation.Between, -1000,1000);
-
-            DateTime initialTime = fixture.device.RTCTest();
+            outputResult.AddCondition("Time difference", Operation.Between, -toleranceForTimeDiff, toleranceForTimeDiff);
             DateTime startTime = DateTime.Now;
+            DateTime initialTime = fixture.device.RTCTest();
 
             //Remove power from device
             fixture.pwrSupply.SetVoltage(fixture.MainsDcChannel, 0);
@@ -121,12 +122,11 @@ namespace VIVO_45_Board_Test
             }
 
             //TBD get RTC value
-
-            DateTime rtcReport = fixture.device.RTCTest();
             DateTime endTime = DateTime.Now;
-            double msDiff = (endTime - startTime).TotalMilliseconds - (rtcReport - initialTime).TotalMilliseconds;
+            DateTime rtcReport = fixture.device.RTCTest();
+            double secondDiff = (endTime - startTime).Seconds - (rtcReport - initialTime).TotalSeconds;
 
-            outputResult.SetOutcome("Time difference", msDiff);
+            outputResult.SetOutcome("Time difference", secondDiff);
 
             return outputResult;
         }
