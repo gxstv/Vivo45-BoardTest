@@ -113,8 +113,10 @@ namespace VIVO_45_Board_Test
             SupplyExtBattCharger,
             SupplyIntBattCharger,
             SupplyEmmcVdd,
-            RemoteAlarmTxParsed,
-            MuxedPwr
+            RemotteAlarmTxParsed,
+            MuxedPwr,
+            ExtBatVolt = 72,
+            InBatVolt = 73
         }
 
         public ScopeInput()

@@ -85,10 +85,11 @@ namespace VIVO_45_Board_Test
 
         //Battery tests
         TestExtBattTherm, TestIntBattTherm,
-        TestExtBattCharging,
-        //TestIntBattCharging,
-        //TestExtBattControl,
         TestIntBattControl,
+        TestExtBattCharging,
+        TestIntBattCharging,
+        //TestExtBattControl,
+        
         TestExtBattChargeRectifier, TestIntBattChargeRectifier,
 
         //Motor tests
@@ -296,7 +297,7 @@ namespace VIVO_45_Board_Test
             testFunctions[(int)TestNames.TestExtBattTherm] = new TestFunction(RunTestExtBattTherm, "External battery thermistor test");
             testFunctions[(int)TestNames.TestIntBattTherm] = new TestFunction(RunTestIntBattTherm, "Internal battery thermistor test");
             testFunctions[(int)TestNames.TestExtBattCharging] = new TestFunction(RunTestExtBattCharging, "External battery charging test");
-           // testFunctions[(int)TestNames.TestIntBattCharging] = new TestFunction(RunTestIntBattCharging, "Internal battery charging test");
+            testFunctions[(int)TestNames.TestIntBattCharging] = new TestFunction(RunTestIntBattCharging, "Internal battery charging test");
             testFunctions[(int)TestNames.TestExtBattControl] = new TestFunction(RunTestExtBattControl, "External battery control test");
             testFunctions[(int)TestNames.TestIntBattControl] = new TestFunction(RunTestIntBattControl, "Internal battery control test");
             testFunctions[(int)TestNames.TestExtBattChargeRectifier] = new TestFunction(RunTestExtBattChargeRectifier, "External battery charging rectifier test");

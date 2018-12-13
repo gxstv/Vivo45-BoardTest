@@ -60,132 +60,148 @@ namespace VIVO_45_Board_Test
 
         private TestResult RunTestExtBattCharging()
         {
-            double lowVoltage = 12;
-            double tolerance = 0.02;
-            double powerRead;
+            double voltageWithoutLoad = 16.4;
+            double voltageWithLoad = 13.0;
+            double toleranceLoad = 0.03;
+            double toleranceNoLoad = 0.08;
+            double currentLow = 2.0;
 
-            double currentLow = 0.2;
-            double currentHigh = 0.5;
 
             TestResult outputResult = new TestResult(resultList.Count, TestType.Battery,
                 "Tests the external battery charging functionality");
 
             //Check for charging vs not charging voltages
-            outputResult.AddCondition("Current uncharged", Operation.LessThan, currentLow);
-            outputResult.AddCondition("Current charging", Operation.GreaterThan, currentHigh);
-            //outputResult.AddCondition("Voltage uncharged", Operation.Between, lowVoltage*(1-tolerance), lowVoltage*(1+tolerance));
-            //outputResult.AddCondition("Voltage charging", Operation.GreaterThan, lowVoltage*(1+tolerance));
+            outputResult.AddCondition("Voltage charging without load", Operation.Between, voltageWithoutLoad * (1- toleranceLoad), voltageWithoutLoad * (1 + toleranceLoad));
+            outputResult.AddCondition("Voltage charging with load", Operation.Between , voltageWithLoad * (1 - toleranceNoLoad), voltageWithLoad * (1 + toleranceNoLoad));
+            outputResult.AddCondition("Voltage uncharged", Operation.LessThan, currentLow);
+           
 
-            //Disable charging via MP
+
+            fixture.pwrSupply.DisableOutput();
+            Thread.Sleep(1000);
+            fixture.pwrSupply.EnableOutput();
+            //Delay for device restart
+            Thread.Sleep(15000);
+
+            if (!fixture.device.IsVivo45Connected())
+            {
+                return outputResult;
+            }
+
+            //Get MP list
+            if (!fixture.device.ResetMPList())
+            {
+                return outputResult;
+            }
+
+            fixture.pwrSupply.DisableChannel(fixture.ExtBattChannel);
+            fixture.pwrSupply.DisableChannel(fixture.ExtDcChannel);
+            fixture.pwrSupply.DisableChannel(fixture.IntBattChannel);
             fixture.device.SetMP("External Bat Charger Control", 0);
-
-            //Set low voltage on battery
-            fixture.pwrSupply.SetVoltage(fixture.ExtBattChannel, lowVoltage);
-
-            Thread.Sleep(PowerSettleMs);
-
-            //Enable sink-source loads on external power supply
+            double meter0 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.ExtBatVolt, Imports.Range.Range_20V);
+            outputResult.SetOutcome("Voltage charging without load", meter0);
             fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan2, true);
-
-            Thread.Sleep(DigitalOutput.SwitchingMs);
-
-            //Read battery voltage and save result
-            //powerRead = fixture.pwrSupply.GetVoltageMeasurement(fixture.ExtBattChannel);
-            //outputResult.SetOutcome("Voltage uncharged", powerRead);
-
-            //Read battery current and save result
-            powerRead = fixture.pwrSupply.GetCurrentMeasurement(fixture.ExtBattChannel);
-            outputResult.SetOutcome("Current uncharged", powerRead);
-
-            //Re-enable charging via MP
+            Thread.Sleep(50);
+            double meter1 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.ExtBatVolt, Imports.Range.Range_20V);
+            outputResult.SetOutcome("Voltage charging with load", meter1);
+            Thread.Sleep(500);
             fixture.device.SetMP("External Bat Charger Control", 1);
-
-            Thread.Sleep(PowerSettleMs);
-
-            //Read battery voltage and save result
-            //powerRead = fixture.pwrSupply.GetVoltageMeasurement(fixture.ExtBattChannel);
-            //outputResult.SetOutcome("Voltage charging", powerRead);
-            powerRead = fixture.pwrSupply.GetCurrentMeasurement(fixture.ExtBattChannel);
-            outputResult.SetOutcome("Current charging", powerRead);
-
-            //Remove sink source loads
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan1, false);
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan2, false);
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan3, false);
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan4, false);
-
-            Thread.Sleep(DigitalOutput.SwitchingMs);
-
+            double meter2 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.ExtBatVolt, Imports.Range.Range_20V);
+            outputResult.SetOutcome("Voltage uncharged", meter2);
             //Reset default charging
             fixture.device.SetMP("External Bat Charger Control", 2);
-
+            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan2, false);
             ResetPowerSources();
+            fixture.pwrSupply.EnableChannel(fixture.ExtBattChannel);
+            fixture.pwrSupply.EnableChannel(fixture.ExtDcChannel);
+            fixture.pwrSupply.EnableChannel(fixture.IntBattChannel);
 
             return outputResult;
         }
 
         private TestResult RunTestIntBattCharging()
         {
-            double lowVoltage = 12;
-            double tolerance = 0.02;
-            double powerRead;
-            double currentLow = 0.1;
-            double currentHigh = 0.5;
+            double voltageWithoutLoad = 16.4;
+            double voltageWithLoad = 9.5;
+            double toleranceLoad = 0.03;
+            double toleranceNoLoad = 0.09;
+            double currentLow = 2.0;
+
 
             TestResult outputResult = new TestResult(resultList.Count, TestType.Battery,
-                "Tests the internal battery charging functionality");
+                "Tests the Internal battery charging functionality");
 
             //Check for charging vs not charging voltages
-            outputResult.AddCondition("Current uncharged", Operation.LessThan, currentLow);
-            outputResult.AddCondition("Current charging", Operation.GreaterThan, currentHigh);
-            //outputResult.AddCondition("Voltage uncharged", Operation.Between, lowVoltage*(1-tolerance), lowVoltage*(1+tolerance));
-            //outputResult.AddCondition("Voltage charging", Operation.GreaterThan, lowVoltage*(1+tolerance));
+            outputResult.AddCondition("Voltage charging without load", Operation.Between, voltageWithoutLoad * (1 - toleranceLoad), voltageWithoutLoad * (1 + toleranceLoad));
+            outputResult.AddCondition("Voltage charging with load", Operation.Between, voltageWithLoad * (1 - toleranceNoLoad), voltageWithLoad * (1 + toleranceNoLoad));
+            outputResult.AddCondition("Voltage uncharged", Operation.LessThan, currentLow);
 
-            //Disable charging via MP
+
+
+            
+
+            fixture.pwrSupply.DisableChannel(fixture.ExtBattChannel);
+            fixture.pwrSupply.DisableChannel(fixture.ExtDcChannel);
+            fixture.pwrSupply.DisableChannel(fixture.IntBattChannel);
             fixture.device.SetMP("Internal Bat Charger Control", 0);
-
-            //Set low voltage on battery
-            fixture.pwrSupply.SetVoltage(fixture.IntBattChannel, lowVoltage);
-
-            Thread.Sleep(PowerSettleMs);
-
-            //Enable sink-source loads on external power supply
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan3, true);
-
-            Thread.Sleep(DigitalOutput.SwitchingMs);
-
-            //Read battery voltage and save result
-            //powerRead = fixture.pwrSupply.GetVoltageMeasurement(fixture.IntBattChannel);
-            //outputResult.SetOutcome("Voltage uncharged", powerRead);
-
-            //Read battery current and save result
-            powerRead = fixture.pwrSupply.GetCurrentMeasurement(fixture.IntBattChannel);
-            outputResult.SetOutcome("Current uncharged", powerRead);
-
-
-            //Re-enable charging via MP
+            double meter0 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.ExtBatVolt, Imports.Range.Range_20V);
+            outputResult.SetOutcome("Voltage charging without load", meter0);
+            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan2, true);
+            Thread.Sleep(50);
+            double meter1 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.ExtBatVolt, Imports.Range.Range_20V);
+            outputResult.SetOutcome("Voltage charging with load", meter1);
+            Thread.Sleep(500);
             fixture.device.SetMP("Internal Bat Charger Control", 1);
-
-            Thread.Sleep(PowerSettleMs);
-
-            //Read battery voltage and save result
-            //powerRead = fixture.pwrSupply.GetVoltageMeasurement(fixture.IntBattChannel);
-            //outputResult.SetOutcome("Voltage charging", powerRead);
-            powerRead = fixture.pwrSupply.GetCurrentMeasurement(fixture.IntBattChannel);
-            outputResult.SetOutcome("Current charging", powerRead);
-
-            //Remove sink source loads
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan1, false);
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan2, false);
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan3, false);
-            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan4, false);
-
-            Thread.Sleep(DigitalOutput.SwitchingMs);
-
+            double meter2 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.ExtBatVolt, Imports.Range.Range_20V);
+            outputResult.SetOutcome("Voltage uncharged", meter2);
             //Reset default charging
             fixture.device.SetMP("Internal Bat Charger Control", 2);
-
+            fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan2, false);
             ResetPowerSources();
+
+            if(outputResult.getStatus() != "Pass")
+            {
+                fixture.pwrSupply.DisableOutput();
+                Thread.Sleep(1000);
+                fixture.pwrSupply.EnableOutput();
+                //Delay for device restart
+                Thread.Sleep(15000);
+
+                if (!fixture.device.IsVivo45Connected())
+                {
+                    return outputResult;
+                }
+
+                //Get MP list
+                if (!fixture.device.ResetMPList())
+                {
+                    return outputResult;
+                }
+
+                fixture.pwrSupply.DisableChannel(fixture.ExtBattChannel);
+                fixture.pwrSupply.DisableChannel(fixture.ExtDcChannel);
+                fixture.pwrSupply.DisableChannel(fixture.IntBattChannel);
+                fixture.device.SetMP("Internal Bat Charger Control", 0);
+                meter0 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.InBatVolt, Imports.Range.Range_20V);
+                outputResult.SetOutcome("Voltage charging without load", meter0);
+                fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan3, true);
+                Thread.Sleep(50);
+                meter1 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.InBatVolt, Imports.Range.Range_20V);
+                outputResult.SetOutcome("Voltage charging with load", meter1);
+                Thread.Sleep(500);
+                fixture.device.SetMP("Internal Bat Charger Control", 1);
+                meter2 = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.InBatVolt, Imports.Range.Range_20V);
+                outputResult.SetOutcome("Voltage uncharged", meter2);
+                //Reset default charging
+                fixture.device.SetMP("Internal Bat Charger Control", 2);
+                fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.SSLoadChan3, false);
+                ResetPowerSources();
+                fixture.pwrSupply.EnableChannel(fixture.ExtBattChannel);
+                fixture.pwrSupply.EnableChannel(fixture.ExtDcChannel);
+                fixture.pwrSupply.EnableChannel(fixture.IntBattChannel);
+            }
+            
+
 
             return outputResult;
         }
