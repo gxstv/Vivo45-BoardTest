@@ -169,7 +169,7 @@ namespace VIVO_45_Board_Test
 
             //Wait for Vivo45 to come online
             bw.ReportProgress(0, "Waiting for unit startup");
-            Thread.Sleep(20000);
+            Thread.Sleep(25000);
 
             //Check for Vivo 45
             bw.ReportProgress(0, "Initializing Vivo45");

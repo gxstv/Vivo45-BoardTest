@@ -33,7 +33,8 @@ namespace VIVO_45_Board_Test
         TestButtons, TestOverlayLEDs, TestMainsLED, TestButtonLED,
 
         //Power supply tests
-        Test12VT, Test12VC, Test5VT, Test5VC, Test3V3C, Test3V3T,
+        Test12VT, Test12VC, Test5VT, Test5VC, Test3V3C,
+        //Test3V3T,
         TestVSNVS, Test2V5, Test1V8, Test1V5DDR, Test1V375, Test1V2,
         TestMotorPower, TestRtcBatt,
 
@@ -212,8 +213,8 @@ namespace VIVO_45_Board_Test
             testFunctions[(int)TestNames.Test5VC] = new TestFunction(RunTest5VC, "5V communication supply test");
             testFunctions[(int)TestNames.Test3V3C] = new TestFunction(RunTest3V3C, "3.3V communication supply test");
 
-            testFunctions[(int)TestNames.Test3V3T] = new TestFunction(RunTest3V3T, "3.3V treatment supply test");
-            testFunctions[(int)TestNames.Test3V3T].MinHwRev = new Version(6, 0);    //Only run 3V3T testing on rev 6 HW or higher
+            //testFunctions[(int)TestNames.Test3V3T] = new TestFunction(RunTest3V3T, "3.3V treatment supply test");
+            //testFunctions[(int)TestNames.Test3V3T].MinHwRev = new Version(6, 0);    //Only run 3V3T testing on rev 6 HW or higher
 
             testFunctions[(int)TestNames.TestVSNVS] = new TestFunction(RunTestVSNVS, "VSNVS (3V) supply test");
             testFunctions[(int)TestNames.Test2V5] = new TestFunction(RunTest2V5C, "2.5V communication supply test");
@@ -334,7 +335,7 @@ namespace VIVO_45_Board_Test
             testFunctions[(int)TestNames.Test3V3C] = new TestFunction(RunTest3V3C, "3.3V communication supply test");
 
             testFunctions[(int)TestNames.Test3V3T] = new TestFunction(RunTest3V3T, "3.3V treatment supply test");
-            testFunctions[(int)TestNames.Test3V3T].MinHwRev = new Version(6, 0);    //Only run 3V3T testing on rev 6 HW or higher
+            //testFunctions[(int)TestNames.Test3V3T].MinHwRev = new Version(6, 0);    //Only run 3V3T testing on rev 6 HW or higher
 
             testFunctions[(int)TestNames.TestVSNVS] = new TestFunction(RunTestVSNVS, "VSNVS (3V) supply test");
             testFunctions[(int)TestNames.Test2V5] = new TestFunction(RunTest2V5C, "2.5V communication supply test");
