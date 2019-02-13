@@ -122,9 +122,9 @@ namespace VIVO_45_Board_Test
         private TestResult RunTestIntBattCharging()
         {
             double voltageWithoutLoad = 16.4;
-            double voltageWithLoad = 9.5;
+            double voltageWithLoad = 9.0; //Based on first patch boards we are tested. Used to be 9.5V
             double toleranceLoad = 0.03;
-            double toleranceNoLoad = 0.09;
+            double toleranceNoLoad = 0.10;
             double currentLow = 2.0;
 
 
