@@ -44,7 +44,7 @@
   <ItemGroup>
     <Reference Include="Breas.Device.Windows, Version=1.0.1.24835, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Vivo45-BoardTest-V1master\VIVO 45 Board Test\VIVO 45 Board Test\Breas.Device.Windows.dll</HintPath>
+      <HintPath>.\Breas.Device.Windows.dll</HintPath>
     </Reference>
     <Reference Include="FTD2XX_NET">
       <HintPath>.\FTD2XX_NET.dll</HintPath>
@@ -58,7 +58,7 @@
     </Reference>
     <Reference Include="NationalInstruments.DAQmx, Version=17.1.45.99, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Vivo45-BoardTest-V1master\VIVO 45 Board Test\VIVO 45 Board Test\NationalInstruments.DAQmx.dll</HintPath>
+      <HintPath>.\NationalInstruments.DAQmx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
