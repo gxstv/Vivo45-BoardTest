@@ -53,8 +53,9 @@
       <HintPath>..\packages\MathNet.Numerics.3.20.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NationalInstruments.Common">
-      <HintPath>..\..\..\..\VIVO45 Board Test\VIVO 45 Board Test\packages\NationalInstruments.Common.dll</HintPath>
+    <Reference Include="NationalInstruments.Common, Version=8.7.35.133, Culture=neutral, PublicKeyToken=18cbae0f9955702a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\NationalInstruments.Common.dll</HintPath>
     </Reference>
     <Reference Include="NationalInstruments.DAQmx, Version=17.1.45.99, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
