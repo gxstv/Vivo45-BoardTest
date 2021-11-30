@@ -92,6 +92,7 @@ namespace VIVO_45_Board_Test
         {
             double conversionFactor = 0.004394545;
             double targetVoltage = 5;
+            double offset = 0.1;
             double tolerance = 0.05;
             double mpTolerance = 0.05;
 
@@ -101,7 +102,7 @@ namespace VIVO_45_Board_Test
 
             //Add voltage conditions to result
             outputResult.AddCondition("Voltage (scope)", Operation.Between, targetVoltage * (1 - tolerance), targetVoltage * (1 + tolerance));
-            outputResult.AddCondition("Voltage (scope + divider)", Operation.Between, 2.35, 2.62);
+            //outputResult.AddCondition("Voltage (scope + divider)", Operation.Between, 2.35, 2.62);
 
             //Switch in loading resistor
             fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.LoadRes5VT, true);
@@ -115,11 +116,12 @@ namespace VIVO_45_Board_Test
             //Save value to test result
             outputResult.SetOutcome("Voltage (scope)", meter);
 
+            // Disable Voltage (scope + divider) test. 
             //Measure divided value using scope
-            meter = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.Supply5VTDiv, Imports.Range.Range_5V);
+            //meter = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.Supply5VTDiv, Imports.Range.Range_5V) + offset;
 
             //Save value to test result
-            outputResult.SetOutcome("Voltage (scope + divider)", meter);
+            //outputResult.SetOutcome("Voltage (scope + divider)", meter);
 
             //Get MP value of divided value
             double mpResult = (double)fixture.device.GetMpValue("5 Volt CPU Raw Ad");
@@ -131,7 +133,9 @@ namespace VIVO_45_Board_Test
             }
 
             //Create new condition, checking that MP value is within tolerance of scope measurement
-            outputResult.AddCondition("Voltage (MP)", Operation.Between, meter * (1 - mpTolerance), meter * (1 + mpTolerance));
+            //outputResult.AddCondition("Voltage (MP)", Operation.Between, meter * (1 - mpTolerance), meter * (1 + mpTolerance));
+            // Use fix limits
+            outputResult.AddCondition("Voltage (MP)", Operation.Between, 2.356, 2.616);
 
             //Save value to test result
             outputResult.SetOutcome("Voltage (MP)", mpResult);
@@ -151,14 +155,18 @@ namespace VIVO_45_Board_Test
             double targetVoltage = 5;
             double tolerance = 0.05;
             double mpTolerance = 0.05;
-
+            
+            // Disable Voltage (scope + divider) test. 
+            // Use fix limits for Voltage (MP) test.
+            
             //Create test result
             TestResult outputResult = new TestResult(resultList.Count, TestType.PowerSupply,
                 "Tests the 5V communication power supply");
 
             //Add voltage conditions to result
             outputResult.AddCondition("Voltage (scope)", Operation.Between, targetVoltage * (1 - tolerance), targetVoltage * (1 + tolerance));
-            outputResult.AddCondition("Voltage (scope + divider)", Operation.Between, 2.35, 2.62);
+            //Disable Voltage (scope + divider) test. 
+            //outputResult.AddCondition("Voltage (scope + divider)", Operation.Between, 2.35, 2.62); 
 
             //Switch in loading resistor
             fixture.outputController.EnableOutput(DigitalOutput.OutputSignals.LoadRes5VC, true);
@@ -173,10 +181,12 @@ namespace VIVO_45_Board_Test
             outputResult.SetOutcome("Voltage (scope)", meter);
 
             //Measure divided value using scope
-            meter = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.Supply5VCDiv, Imports.Range.Range_5V);
+            //Disable Voltage (scope + divider) test.
+            //meter = fixture.GetScopeMeterReading(ScopeInput.MuxedInputSignal.Supply5VCDiv, Imports.Range.Range_5V);
 
             //Save value to test result
-            outputResult.SetOutcome("Voltage (scope + divider)", meter);
+            //Disable Voltage (scope + divider) test. 
+            //outputResult.SetOutcome("Voltage (scope + divider)", meter);
 
             //Get MP value of divided value
             double mpResult = (double)fixture.device.GetMpValue("ADC Sensor Data 5VC");
@@ -188,7 +198,9 @@ namespace VIVO_45_Board_Test
             }
 
             //Create new condition, checking that MP value is within tolerance of scope measurement
-            outputResult.AddCondition("Voltage (MP)", Operation.Between, meter * (1 - mpTolerance), meter * (1 + mpTolerance));
+            //Use fix limits for Voltage(MP) test.
+            //outputResult.AddCondition("Voltage (MP)", Operation.Between, meter * (1 - mpTolerance), meter * (1 + mpTolerance));
+            outputResult.AddCondition("Voltage (MP)", Operation.Between, 2.377, 2.595);
 
             //Save value to test result
             outputResult.SetOutcome("Voltage (MP)", mpResult);
