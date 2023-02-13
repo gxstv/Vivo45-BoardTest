@@ -239,7 +239,7 @@
             this.toolStripSeparator1,
             this.generateSubfolderToolStripMenuItem});
             this.reportOptionsToolStripMenuItem.Name = "reportOptionsToolStripMenuItem";
-            this.reportOptionsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.reportOptionsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.reportOptionsToolStripMenuItem.Text = "Report options";
             // 
             // outputXMLToolStripMenuItem
@@ -288,28 +288,28 @@
             // editFixtureSetupToolStripMenuItem
             // 
             this.editFixtureSetupToolStripMenuItem.Name = "editFixtureSetupToolStripMenuItem";
-            this.editFixtureSetupToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.editFixtureSetupToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.editFixtureSetupToolStripMenuItem.Text = "Edit fixture setup";
             this.editFixtureSetupToolStripMenuItem.Click += new System.EventHandler(this.editFixtureSetupToolStripMenuItem_Click);
             // 
             // startWiFiToolStripMenuItem
             // 
             this.startWiFiToolStripMenuItem.Name = "startWiFiToolStripMenuItem";
-            this.startWiFiToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.startWiFiToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.startWiFiToolStripMenuItem.Text = "Autoconfig WiFi";
             this.startWiFiToolStripMenuItem.Click += new System.EventHandler(this.startWiFiToolStripMenuItem_Click);
             // 
             // scanForHWToolStripMenuItem
             // 
             this.scanForHWToolStripMenuItem.Name = "scanForHWToolStripMenuItem";
-            this.scanForHWToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.scanForHWToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.scanForHWToolStripMenuItem.Text = "Scan for HW";
             this.scanForHWToolStripMenuItem.Click += new System.EventHandler(this.scanForHWToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -390,7 +390,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "VIVO45 Board Test v2.3";
+            this.Text = "VIVO45 Board Test v2.3.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
